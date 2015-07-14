@@ -56,10 +56,10 @@ int main( int argc, const char** argv ) {
           43.0, 0.0, 360.0, cv::Scalar(255, 255, 255), -1);
 
    // Read the video stream
-  capture = cvCaptureFromCAM( -1 );
-  if( capture ) {
+   VideoCapture capture(-1);
+  if( capture.isOpened() ) {
     while( true ) {
-      frame = cvQueryFrame( capture );
+      capture.read(frame);
       // mirror it
       cv::flip(frame, frame, 1);
       frame.copyTo(debugImage);
